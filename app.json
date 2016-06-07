@@ -1,5 +1,5 @@
 {
-    "appName":"awesomeApplication",
+    "appName":"awesomeapplication",
     "description":"This application is just awesome",
     "provider":"FOKUS",
     "shared":true,
@@ -7,7 +7,7 @@
         "req1":"1", 
         "req2":"2"
     },
-    "projectName":"NUBOMEDIA",
+    "projectName":"nubomedia",
     "gitURL":"https://github.com/nubomedia/nubomedia-magic-mirror.git",
     "ports":[
         {
@@ -21,7 +21,7 @@
             "protocol":"TCP"
         }
     ],
-    "flavor":"SMALL",
+    "flavor":"MEDIUM",
     "replicasNumber":1,
     "secretName":null,
     "qualityOfService":null,
