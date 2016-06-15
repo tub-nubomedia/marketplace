@@ -55,9 +55,6 @@ public class Application {
     private String appName;
 
     @NotNull
-    private String projectName;  //Replacing
-
-    @NotNull
     private boolean shared;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -164,14 +161,6 @@ public class Application {
 
     public void setAppName(String appName) {
         this.appName = appName;
-    }
-
-    public String getProjectName() {
-        return projectName;
-    }
-
-    public void setProjectName(String projectName) {
-        this.projectName = projectName;
     }
 
     public Set<NubomediaPort> getPorts() {
@@ -312,7 +301,6 @@ public class Application {
                 ", requirements=" + requirements +
                 ", gitURL='" + gitURL + '\'' +
                 ", appName='" + appName + '\'' +
-                ", projectName='" + projectName + '\'' +
                 ", shared=" + shared +
                 ", ports=" + ports +
                 ", flavor=" + flavor +
