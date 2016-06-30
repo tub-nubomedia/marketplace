@@ -27,7 +27,7 @@ Below it is shown how the json formatted application descriptor looks like:
 
 ```json
 {
-    "appName":"awesomeApplication",
+    "name":"awesomeApplication",
     "description":"This application is just awesome",
     "provider":"FOKUS",
     "shared":true,
@@ -72,7 +72,7 @@ Each parameter has the following meaning:
 
 | Parameter             |Meaning|
 | -------------         |-------|
-| appName               | Name of the application  |
+| name               | Name of the application  |
 | description           | Description of the application  |
 | provider              | Provider of the application  |
 | shared                | Shared between users. `true` if application should be publicly available, `false` if application should be private |

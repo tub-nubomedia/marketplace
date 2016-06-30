@@ -1,5 +1,5 @@
 {
-    "appName":"awesomeapplication",
+    "name":"awesomeapplication",
     "description":"This application is just awesome",
     "provider":"FOKUS",
     "shared":true,

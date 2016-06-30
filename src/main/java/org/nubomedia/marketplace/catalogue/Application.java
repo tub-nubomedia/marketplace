@@ -52,7 +52,7 @@ public class Application {
     private String gitURL;
 
     @NotNull
-    private String appName;
+    private String name;
 
     @NotNull
     private boolean shared;
@@ -155,12 +155,12 @@ public class Application {
         this.gitURL = gitURL;
     }
 
-    public String getAppName() {
-        return appName;
+    public String getName() {
+        return name;
     }
 
-    public void setAppName(String appName) {
-        this.appName = appName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Set<NubomediaPort> getPorts() {
@@ -300,7 +300,7 @@ public class Application {
                 ", provider='" + provider + '\'' +
                 ", requirements=" + requirements +
                 ", gitURL='" + gitURL + '\'' +
-                ", appName='" + appName + '\'' +
+                ", name='" + name + '\'' +
                 ", shared=" + shared +
                 ", ports=" + ports +
                 ", flavor=" + flavor +
