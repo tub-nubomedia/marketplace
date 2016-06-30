@@ -7,7 +7,6 @@
         "req1":"1", 
         "req2":"2"
     },
-    "projectName":"nubomedia",
     "gitURL":"https://github.com/nubomedia/nubomedia-magic-mirror.git",
     "ports":[
         {
