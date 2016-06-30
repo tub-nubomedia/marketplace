@@ -7,6 +7,7 @@ _version=${version}
 _marketplace_base="/opt/nubomedia/marketplace"
 _process_name="marketplace"
 _screen_name="nubomedia"
+_config_file="/etc/nubomedia/nubomedia-marketplace.properties"
 
 function checkBinary {
   if command -v $1 >/dev/null 2>&1; then
@@ -47,15 +48,15 @@ function start {
     start_checks
     screen_exists=$(screen -ls | grep ${_screen_name} | wc -l);
     if [ "${screen_exists}" -eq 0 ]; then
-        screen -c screenrc -d -m -S ${_screen_name} -t ${_process_name} java -jar "$_marketplace_base/build/libs/$_process_name-$_version.jar"
+        screen -c screenrc -d -m -S ${_screen_name} -t ${_process_name} java -jar "$_marketplace_base/build/libs/$_process_name-$_version.jar" --spring.config.location=file:${_config_file}
     else
-        screen -S $_screen_name -p 0 -X screen -t $_process_name java -jar "$_marketplace_base/build/libs/$_process_name-$_version.jar"
+        screen -S $_screen_name -p 0 -X screen -t $_process_name java -jar "$_marketplace_base/build/libs/$_process_name-$_version.jar" --spring.config.location=file:${_config_file}
     fi
 }
 
 function start_fg {
     start_checks
-    java -jar "build/libs/${_process_name}-$_version.jar" --spring.config.location=file:${_openbaton_config_file}
+    java -jar "build/libs/${_process_name}-$_version.jar" --spring.config.location=file:${_config_file}
 }
 
 
