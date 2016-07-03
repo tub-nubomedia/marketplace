@@ -4,7 +4,7 @@ source ./gradle.properties
 
 _version=${version}
 
-_marketplace_base="/opt/nubomedia/marketplace"
+_project_base="/opt/nubomedia/marketplace"
 _process_name="marketplace"
 _screen_name="nubomedia"
 _config_file="/etc/nubomedia/nubomedia-marketplace.properties"
@@ -48,9 +48,9 @@ function start {
     start_checks
     screen_exists=$(screen -ls | grep ${_screen_name} | wc -l);
     if [ "${screen_exists}" -eq 0 ]; then
-        screen -c screenrc -d -m -S ${_screen_name} -t ${_process_name} java -jar "$_marketplace_base/build/libs/$_process_name-$_version.jar" --spring.config.location=file:${_config_file}
+        screen -c screenrc -d -m -S ${_screen_name} -t ${_process_name} java -jar "$_project_base/build/libs/$_process_name-$_version.jar" --spring.config.location=file:${_config_file}
     else
-        screen -S $_screen_name -p 0 -X screen -t $_process_name java -jar "$_marketplace_base/build/libs/$_process_name-$_version.jar" --spring.config.location=file:${_config_file}
+        screen -S $_screen_name -p 0 -X screen -t $_process_name java -jar "$_project_base/build/libs/$_process_name-$_version.jar" --spring.config.location=file:${_config_file}
     fi
 }
 
@@ -60,14 +60,15 @@ function start_fg {
 }
 
 
-function stop {
-    if screen -list | grep ${_screen_name}; then
-	    screen -S ${_screen_name} -p 0 -X stuff "exit$(printf \\r)"
-    fi
-}
+#function stop {
+#    if screen -list | grep ${_screen_name}; then
+#	    screen -S ${_screen_name} -p 0 -X stuff "exit$(printf \\r)"
+#    fi
+#}
 
 function restart {
     kill
+    sleep 2
     start
 }
 
@@ -93,8 +94,8 @@ function end {
     exit
 }
 function usage {
-    echo -e "Open-Baton\n"
-    echo -e "Usage:\n\t ./openbaton.sh [compile|install_plugins|start|start_fg|stop|test|kill|clean]"
+    echo -e "Marketplace\n"
+    echo -e "Usage:\n\t ./marketplace.sh [compile|start|start_fg|test|kill|clean]"
 }
 
 ##
@@ -113,8 +114,6 @@ do
     case ${cmds[$i]} in
         "clean" )
             clean ;;
-        "install_plugins" )
-            install_plugins ;;
         "sc" )
             clean
             compile
@@ -123,8 +122,8 @@ do
             start ;;
         "start_fg" )
             start_fg ;;
-        "stop" )
-            stop ;;
+        #"stop" )
+        #    stop ;;
         "restart" )
             restart ;;
         "compile" )
